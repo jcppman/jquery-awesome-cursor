@@ -1,6 +1,6 @@
-/*! jquery-awesome-cursor - v0.1.5 - 2015-12-09
+/*! jquery-awesome-cursor - v0.1.5 - 2016-03-08
 * https://jwarby.github.io/jquery-awesome-cursor
-* Copyright (c) 2015 James Warwood; Licensed MIT */
+* Copyright (c) 2016 James Warwood; Licensed MIT */
 ;(function(global, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);
@@ -126,6 +126,10 @@
       options.size = typeof options.size === 'string' ?
           parseInt(options.size, 10) : options.size;
 
+      options.font.size = typeof options.font.size === 'undefined' ?
+          options.size : typeof options.font.size === 'string' ?
+              parseInt(options.font.size, 10) : options.font.size;
+
       if (typeof options.hotspot === 'string') {
         options.hotspot = parseHotspotString(options.hotspot, options.size);
       }
@@ -206,7 +210,7 @@
 
       // Draw the cursor to the canvas
       context.fillStyle = options.color;
-      context.font = options.size + 'px ' + options.font.family;
+      context.font = options.font.size + 'px ' + options.font.family;
       context.textAlign = 'center';
       context.textBaseline = 'middle';
       context.fillText(unicode, canvasSize / 2, canvasSize / 2);
